@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, Text, StyleSheet, Image, TextInput, Button, Dimensions, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet, Image, TextInput, Button, Dimensions, TouchableOpacity, ScrollView } from "react-native";
 import MotoImage from '../asset/moto.png' // Image bike
 import ArrowLogin from '../asset/arrow.png' // Image arrow down
 import Eye from '../asset/eye.png' // Image eye show password
@@ -10,7 +10,7 @@ var maxHeight = Dimensions.get("screen").height; // height full screen
 export default class ScreenLogin extends Component {
     render() {
         return (
-                <KeyboardAvoidingView style={styles.container}>
+                <ScrollView style={styles.container}>
                     <View style={styles.header}>
                         <Image style={styles.header_imgmoto} source={MotoImage} />
                     </View>
@@ -31,7 +31,7 @@ export default class ScreenLogin extends Component {
                         <Text style={styles.txt_regis}>Quên mật khẩu</Text>
 
                     </View>
-                </KeyboardAvoidingView>
+                </ScrollView>
         );
     }
 }
@@ -49,8 +49,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#BAA5CE'
     },
     header_imgmoto:{
-        height:maxHeight*0.4,
-        resizeMode:"contain",
+        top:20,
     },
     body: {
         zIndex: -1,
