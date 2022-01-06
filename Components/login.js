@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { View, Text, StyleSheet, Image, TextInput, Button, Dimensions, TouchableOpacity, ScrollView } from "react-native";
-import MotoImage from '../asset/moto.png' // Image bike
-import ArrowLogin from '../asset/arrow.png' // Image arrow down
-import Eye from '../asset/eye.png' // Image eye show password
+import MotoImage from '../assets/images/moto.png' // Image bike
+import ArrowLogin from '../assets/images/arrow.png' // Image arrow down
+import Eye from '../assets/images/eye.png' // Image eye show password
 import KeyboardAvoidingView from "react-native/Libraries/Components/Keyboard/KeyboardAvoidingView";
 
 var maxwidth = Dimensions.get("screen").width; // width full screen
@@ -22,7 +22,7 @@ export default class ScreenLogin extends Component {
                         </View>
                         <TextInput style={styles.ip_account} placeholder='Tên đăng nhập'></TextInput>
                         <View style={styles.warpform_warppassword}>
-                            <TextInput style={styles.ip_account} placeholder='mật khẩu'></TextInput>
+                            <TextInput style={styles.ip_account} secureTextEntry={true} placeholder='mật khẩu'></TextInput>
                             <Image style={styles.img_eye} source={Eye} />
                         </View>
                         <View style={styles.btn_login} >

@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { View, Text, StyleSheet, Image, TextInput } from "react-native";
-import Back from '../asset/back.png';
-import ViewPass from '../asset/view.png';
-import Restriction from '../asset/restriction.png';
+import Back from '../assets/images/back.png';
+import ViewPass from '../assets/images/view.png';
+import Restriction from '../assets/images/restriction.png';
 import KeyboardAvoidingView from "react-native/Libraries/Components/Keyboard/KeyboardAvoidingView";
 
 export default class ChangePass extends Component {

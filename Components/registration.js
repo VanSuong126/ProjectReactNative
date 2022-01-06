@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { View, Text, TextInput, Image, StyleSheet, ScrollView } from 'react-native';
-import ShipImage from '../asset/moto.png';
-import ArrowDown from '../asset/arrowdown.png';
-import Eye_off from '../asset/view.png';
-import Restriction from '../asset/restriction.png';
+import ShipImage from '../assets/images/moto.png';
+import ArrowDown from '../assets/images/arrowdown.png';
+import Eye_off from '../assets/images/view.png';
+import Restriction from '../assets/images/restriction.png';
 
 export default class RegistrationUser extends Component {
     render() {
@@ -31,11 +31,11 @@ export default class RegistrationUser extends Component {
                     <View style={styles.txp_info_input}><TextInput placeholder="Email" /></View>
                     <View style={styles.txp_info_input}><TextInput placeholder="Địa chỉ" /></View>
                     <View style={styles.txp_info_input}>
-                        <TextInput placeholder="Mật khẩu" />
+                        <TextInput secureTextEntry={true} placeholder="Mật khẩu" />
                         <Image style={styles.img_icon} source={Eye_off} />
                     </View>
                     <View style={styles.txp_info_input}>
-                        <TextInput placeholder="Nhập lại mật khẩu" />
+                        <TextInput secureTextEntry={true} placeholder="Nhập lại mật khẩu" />
                         <Image style={styles.img_icon} source={Restriction} />
                     </View>
                     <View style={styles.btn_submit}>

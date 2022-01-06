@@ -36,7 +36,7 @@
 		</dict>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string/>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -51,5 +51,40 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Helvetica Neue.ttf</string>
+		<string>HelveticaNeue.ttf</string>
+		<string>Helvetica_Neue.ttf</string>
+		<string>couri.ttf</string>
+		<string>crystal.ttf</string>
+		<string>floral.ttf</string>
+		<string>flowdeco.ttf</string>
+		<string>GRGAREF.TTF</string>
+		<string>merscrb.ttf</string>
+		<string>microsslv.ttf</string>
+		<string>helvetica-neue-bold-italic.ttf</string>
+		<string>helvetica-neue-bold.ttf</string>
+		<string>helvetica-neue-condensed-black.ttf</string>
+		<string>helvetica-neue-condensed-bold.ttf</string>
+		<string>helvetica-neue-italic.ttf</string>
+		<string>helvetica-neue-light-italic.ttf</string>
+		<string>helvetica-neue-light.ttf</string>
+		<string>helvetica-neue-medium.ttf</string>
+		<string>helvetica-neue-regular.ttf</string>
+		<string>helvetica-neue-ultra-light-italic.ttf</string>
+		<string>helvetica-neue-ultra-light.ttf</string>
+		<string>helveticaneue.ttf</string>
+		<string>helveticaneuebold.ttf</string>
+		<string>helveticaneuebolditalic.ttf</string>
+		<string>helveticaneuecondensedblack.ttf</string>
+		<string>helveticaneuecondensedbold.ttf</string>
+		<string>helveticaneueitalic.ttf</string>
+		<string>helveticaneuelight.ttf</string>
+		<string>helveticaneuelightitalic.ttf</string>
+		<string>helveticaneuemedium.ttf</string>
+		<string>helveticaneueultralight.ttf</string>
+		<string>helveticaneueultralightitalic.ttf</string>
+	</array>
 </dict>
 </plist>
