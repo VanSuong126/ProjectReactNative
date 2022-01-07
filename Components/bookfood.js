@@ -1,13 +1,14 @@
 import React, { Component } from "react";
-import { View, Image, Text, StyleSheet, FlatList, SafeAreaView, Dimensions, SectionList, ScrollView, TouchableOpacity } from 'react-native';
+import { View, Image, Text, StyleSheet, FlatList, SafeAreaView, Dimensions, ScrollView, TouchableOpacity } from 'react-native';
 
 
-import ImageBlack from '../assets/images/back.png'
-import ArrowDown from '../assets/images/arrowdown.png'
-import ArrowUp from '../assets/images/arrowup.png'
+import ImageBlack from '../assets/images/back.png'// image back
+import ArrowDown from '../assets/images/arrowdown.png' // image arrow down
+import ArrowUp from '../assets/images/arrowup.png' // image arrow up
 
 var maxwidth = Dimensions.get("screen").width; // width full screen 
 
+//khai báo tham số đơn hàng
 var Title_Order = "Chi tiết đơn hàng";
 var Name_Order = "Đơn hàng 1234";
 var Time_Order = "11/02/2021, 10:00";
@@ -20,6 +21,7 @@ var Phone_Shiper = "0397848424";
 var Address_Shiper = "293/1 Tôn Đản, P15, Quận 4, Hồ Chí Minh";
 var Note = ["Xin nhiều tương ớt", "Mì xào ít cay"];
 
+// objet thông tin đơn hàng
 let Info_Order = {
     Title_Order,
     Name_Order,
@@ -33,7 +35,7 @@ let Info_Order = {
     Address_Shiper,
     Note,
 };
-
+// Array chi tiết đặt hàng
 const DataDetailBook = [
     { quantily: 10, namefood: "Mì cay", price: 32000, extra: ["Thêm tôm tươi"] },
     { quantily: 1, namefood: "Trà sữa", price: 32000, extra: null },
@@ -42,11 +44,6 @@ const DataDetailBook = [
     { quantily: 10, namefood: "Mì cay", price: 32000, extra: null },
     { quantily: 1, namefood: "Trà sữa", price: 32000, extra: null },
 ];
-
-
-
- 
-
 export default class BookFood extends Component {
     constructor(){
         super();
@@ -65,7 +62,8 @@ export default class BookFood extends Component {
       };
     render() {
         return (
-            <ScrollView style={{ flex: 1 }}>
+            
+                <ScrollView style={{ flex: 1 }}>
                 <View style={st.Container}>
                     <View style={st.header}>
                         <View style={st.warp_title}>
@@ -93,6 +91,7 @@ export default class BookFood extends Component {
                     <View style={st.detail_book}>
                         <Text style={st.title_detail_book}>Chi tiết đơn hàng</Text>
                         {this.state.isVisible ?
+                        <SafeAreaView >
                         <FlatList
                             data={DataDetailBook}
                             renderItem={({ item }) => (
@@ -111,6 +110,7 @@ export default class BookFood extends Component {
 
                             )}
                         />
+                        </SafeAreaView>
                          :null}
                         <TouchableOpacity onPress={this.ToggleFunction} >
                         {this.state.isVisible ==true ?  <View style={st.warp_collapse}>
@@ -141,7 +141,8 @@ export default class BookFood extends Component {
                         </View>
                     </View>
                 </View>
-            </ScrollView>
+                </ScrollView>
+           
         );
     }
 
