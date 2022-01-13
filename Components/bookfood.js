@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import { View, Image, Text, StyleSheet, FlatList, SafeAreaView, Dimensions, ScrollView, TouchableOpacity } from 'react-native';
 
 
@@ -44,25 +44,52 @@ const DataDetailBook = [
     { quantily: 10, namefood: "Mì cay", price: 32000, extra: null },
     { quantily: 1, namefood: "Trà sữa", price: 32000, extra: null },
 ];
+const currencyFormat = (num) => {
+    return num.toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,') + 'đ';
+};
+function Detail_Book_Order () {
+        const [isVisible, setIsVisible] = useState(true)
+        const ToggleFunction = () =>setIsVisible ((isVisible)=>!isVisible)
+        return (
+            <View style={st.detail_book}>
+                <Text style={st.title_detail_book}>Chi tiết đơn hàng</Text>
+                {isVisible == true?
+                    <SafeAreaView >
+                        {DataDetailBook.map((item, index) =>
+                            <View style={st.warp_detail_food} key={index} >
+                                <View style={st.warp_main_detail}>
+                                    <Text style={st.quantily}>{item.quantily}x</Text>
+                                    <Text style={st.namefood}>{item.namefood}</Text>
+                                    <Text style={st.price}>{currencyFormat(item.price)} </Text>
+                                </View>
+                                <View style={st.warp_extra}>
+                                    {item.extra == null ? null : item.extra.map((e, index) => <Text key={index}>{e}</Text>)}
+                                </View>
+
+                                <Text style={st.hairline_detail}></Text>
+                            </View>
+                        )}
+                    </SafeAreaView>
+                    : null}
+                <TouchableOpacity onPress={ToggleFunction} >
+                    {isVisible == true ? <View style={st.warp_collapse}>
+                        <Text style={st.title_collapse}>Thu gon</Text>
+                        <Image style={{ position: "relative", left: 5 }} source={ArrowUp} />
+                    </View> :
+                        <View style={st.warp_collapse}>
+                            <Text style={st.title_collapse}>Xem chi tiết</Text>
+                            <Image style={{ position: "relative", left: 5 }} source={ArrowDown} />
+                        </View>}
+                </TouchableOpacity>
+            </View>
+
+        );
+    
+}
 export default class BookFood extends Component {
-    constructor() {
-        super();
-        this.state = {
-            isVisible: true
-        }
-    }
-    ToggleFunction = () => {
 
-        this.setState(state => ({
 
-            isVisible: !state.isVisible
 
-        }));
-
-    };
-     currencyFormat=(num)=> {
-        return   num.toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,') +'đ';
-     };
     render() {
         return (
 
@@ -91,37 +118,7 @@ export default class BookFood extends Component {
                         <Text style={st.txt_name_phone}>{Info_Order.Name_Shiper} - {Info_Order.Phone_Shiper}</Text>
                         <Text style={st.txt_address}>{Info_Order.Address_Shiper}</Text>
                     </View>
-                    <View style={st.detail_book}>
-                        <Text style={st.title_detail_book}>Chi tiết đơn hàng</Text>
-                        {this.state.isVisible ?
-                            <SafeAreaView >
-                                {DataDetailBook.map((item, index) =>
-                                    <View style={st.warp_detail_food} key={index} >
-                                        <View style={st.warp_main_detail}>
-                                            <Text style={st.quantily}>{item.quantily}x</Text>
-                                            <Text style={st.namefood}>{item.namefood}</Text>
-                                            <Text style={st.price}>{this.currencyFormat(item.price) }</Text>
-                                        </View>
-                                        <View style={st.warp_extra}>
-                                            {item.extra == null ? null : item.extra.map((e,index) => <Text key={index}>{e}</Text>)}
-                                        </View>
-
-                                        <Text style={st.hairline_detail}></Text>
-                                    </View>
-                                )}
-                            </SafeAreaView>
-                            : null}
-                        <TouchableOpacity onPress={this.ToggleFunction} >
-                            {this.state.isVisible == true ? <View style={st.warp_collapse}>
-                                <Text style={st.title_collapse}>Thu gon</Text>
-                                <Image style={{ position: "relative", left: 5 }} source={ArrowUp} />
-                            </View> :
-                                <View style={st.warp_collapse}>
-                                    <Text style={st.title_collapse}>Xem chi tiết</Text>
-                                    <Image style={{ position: "relative", left: 5 }} source={ArrowDown} />
-                                </View>}
-                        </TouchableOpacity>
-                    </View>
+                    <Detail_Book_Order />
                     <View style={st.total_bill}>
                         <View style={st.warp_bonus}>
                             <Text style={st.title_bonus}>Ưu đãi:</Text>
@@ -130,13 +127,13 @@ export default class BookFood extends Component {
                         <Text style={st.hairline_detail}></Text>
                         <View style={{ flexDirection: "row" }}>
                             <Text style={st.title_bill}>Tổng cộng:</Text>
-                            <Text style={st.amount}>{this.currencyFormat(110000)}</Text>
+                            <Text style={st.amount}>{currencyFormat(110000)}</Text>
                         </View>
                     </View>
                     <View style={st.note}>
                         <Text style={st.title_note}>Ghi chú</Text>
                         <View style={st.warp_note}>
-                            {Info_Order.Note == null ? null : Info_Order.Note.map((n,index) => <Text style={st.detail_note} key={index}>{n}</Text>)}
+                            {Info_Order.Note == null ? null : Info_Order.Note.map((n, index) => <Text style={st.detail_note} key={index}>{n}</Text>)}
                         </View>
                     </View>
                 </View>
