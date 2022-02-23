@@ -87,9 +87,6 @@ function Detail_Book_Order () {
     
 }
 export default class BookFood extends Component {
-
-
-
     render() {
         return (
 

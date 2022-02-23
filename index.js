@@ -9,5 +9,6 @@ import {name as appName} from './app.json';
 import ScreenLogin from './Components/login';
 import BookFood  from './Components/bookfood';
 import RegistrationUser from './Components/registration'
+import History_order from './Components/history'
 
-AppRegistry.registerComponent(appName, () => BookFood);
+AppRegistry.registerComponent(appName, () => History_order);
