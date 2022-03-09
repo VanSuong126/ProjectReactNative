@@ -1,12 +1,11 @@
 import React, { Component, useState } from "react";
-import { View, Image, Text, StyleSheet, FlatList, SafeAreaView, Dimensions, ScrollView, TouchableOpacity } from 'react-native';
-
-
+import { View, Image, Text, StyleSheet, SafeAreaView, ScrollView, TouchableOpacity } from 'react-native';
 import ImageBlack from '../assets/images/back.png'// image back
 import ArrowDown from '../assets/images/arrowdown.png' // image arrow down
 import ArrowUp from '../assets/images/arrowup.png' // image arrow up
 
-var maxwidth = Dimensions.get("screen").width; // width full screen 
+// function change format Curency
+import currencyFormat from "../plugin/CurencyFormat";
 
 //khai báo tham số đơn hàng
 var Title_Order = "Chi tiết đơn hàng";
@@ -44,9 +43,7 @@ const DataDetailBook = [
     { quantily: 10, namefood: "Mì cay", price: 32000, extra: null },
     { quantily: 1, namefood: "Trà sữa", price: 32000, extra: null },
 ];
-const currencyFormat = (num) => {
-    return num.toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,') + 'đ';
-};
+// List detail order book
 function Detail_Book_Order () {
         const [isVisible, setIsVisible] = useState(true)
         const ToggleFunction = () =>setIsVisible ((isVisible)=>!isVisible)

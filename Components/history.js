@@ -1,23 +1,31 @@
-import React, { Component, useState } from "react";
-import { View, Text, StyleSheet, TextInput, Image, TouchableOpacity, Pressable } from "react-native";
+
+import React, { useState } from "react";
+import { View, Text, StyleSheet, TextInput, Image, Pressable, ScrollView } from "react-native";
+// Import image from asset 
 import IconLooking from "../assets/images/looking.png";
 import IconBell from "../assets/images/bell.png";
+// Component Radiobuton
 import RadioButton from "../plugin/RadioButton";
+// Component DateTimePicker
 import DateTimePicker from "../plugin/DateTimePicker";
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import moment from "moment";
 
+//Package lirbary Navigation
+import 'react-native-gesture-handler';
+import {createStackNavigator} from '@react-navigation/stack';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
+// function change format Curency
+import currencyFormat from "../plugin/CurencyFormat";
 
 const DataBill = () => {
     const DataBills = [
-        { idBill: "741211HD", time: "14:00 26/10/2021", totalPrice: "1000000", status :"Mới" },
-        { idBill: "741211HD", time: "14:00 26/10/2021", totalPrice: "1000000", status :"Mới" },
-        { idBill: "741211HD", time: "14:00 26/10/2021", totalPrice: "1000000", status :"Mới" },
+        { idBill: "741211HD", time: "14:00 26/10/2021", totalPrice: 1000000, status: "Mới" },
+        { idBill: "741211HD", time: "14:00 26/10/2021", totalPrice: 1000000, status: "Mới" },
+        { idBill: "741211HD", time: "14:00 26/10/2021", totalPrice: 1000000, status: "Mới" },
     ];
     return (
         <View>
-            {DataBills && DataBills.length > 0 && DataBills.map((d, index) =>{
+            {DataBills && DataBills.length > 0 && DataBills.map((d, index) => {
                 return (
                     <View key={index} style={styles.wap_detail_bill}>
                         <View style={styles.wap_bill_row1}>
@@ -26,7 +34,7 @@ const DataBill = () => {
                         </View>
                         <View style={styles.wap_bill_row2}>
                             <Text style={styles.text_title}>Tổng</Text>
-                            <Text style={styles.text_price}>{d.totalPrice}</Text>
+                            <Text style={styles.text_price}>{currencyFormat(d.totalPrice)}</Text>
                         </View>
                         <View style={styles.wap_bill_row3}>
                             <Text style={styles.text_title}>Trạng thái đơn hàng</Text>
@@ -38,8 +46,7 @@ const DataBill = () => {
         </View>
     );
 }
-
-
+// Button status order
 const ShowStatus = () => {
     const [valueStatus, setValueStatus] = useState(null);
     const DataStatus = [
@@ -51,7 +58,6 @@ const ShowStatus = () => {
     const onPressSatus = (value) => {
         setValueStatus(value);
     }
-
     return (
         <View style={styles.wap_list_status}>
             {DataStatus && DataStatus.length > 0 && DataStatus.map((s, index) => {
@@ -72,15 +78,15 @@ const History_Order = () => {
     const [option, setOption] = useState(null);
     const [fromdate, setFromDate] = useState(null);
     const [todate, setToDate] = useState(null);
+    // Data of radiobutton
     const DataRadioButon = [
         { value: 1, title: "24h" },
         { value: 7, title: "7 ngày" },
         { value: 30, title: "30 ngày" },
         { value: 90, title: "90 ngày" },
     ];
-
     return (
-        <View style={styles.container}>
+        <ScrollView style={styles.container}>
             <View style={styles.content}>
                 <View style={styles.warp_bell}>
                     <Image source={IconBell} />
@@ -104,14 +110,14 @@ const History_Order = () => {
                     </View>
                 </View>
                 <View>
-                    <ShowStatus/>
+                    <ShowStatus />
                     <DataBill />
                 </View>
-   
             </View>
-        </View>
+        </ScrollView>
     );
 }
+
 export default History_Order
 
 const styles = StyleSheet.create({
@@ -208,46 +214,46 @@ const styles = StyleSheet.create({
     wap_bill_row1: {
 
     },
-    text_id:{
-        fontSize:14,
+    text_id: {
+        fontSize: 14,
         fontFamily: "Helvetica Neue",
         fontWeight: "bold",
-        color:"#292929"
+        color: "#292929"
     },
-    text_time:{
-        position:"absolute",
-        right:10,
+    text_time: {
+        position: "absolute",
+        right: 10,
 
     },
-    wap_detail_bill:{
-        marginTop:10,
-        paddingVertical:10,
-        paddingHorizontal:5,
-        backgroundColor:"#FFFFFF",
+    wap_detail_bill: {
+        marginTop: 10,
+        paddingVertical: 10,
+        paddingHorizontal: 5,
+        backgroundColor: "#FFFFFF",
     },
-    text_title:{
-        fontSize:14,
+    text_title: {
+        fontSize: 14,
         fontFamily: "Helvetica Neue",
-        color:"#292929"
+        color: "#292929"
     },
-    text_price:{
-        position:"absolute",
-        right:10,
-        fontSize:14,
+    text_price: {
+        position: "absolute",
+        right: 10,
+        fontSize: 14,
         fontWeight: "bold",
         fontFamily: "Helvetica Neue",
-        color:"#292929",
+        color: "#292929",
     },
-    text_status_bill:{
-        borderRadius:5,
-        backgroundColor:"#BA00FF",
-        position:"absolute",
-        right:10,
-        fontSize:14,
+    text_status_bill: {
+        borderRadius: 5,
+        backgroundColor: "#BA00FF",
+        position: "absolute",
+        right: 10,
+        fontSize: 14,
         fontWeight: "bold",
         fontFamily: "Helvetica Neue",
-        color:"#FFFFFF",
-        paddingVertical:5,
-        paddingHorizontal:10
+        color: "#FFFFFF",
+        paddingVertical: 5,
+        paddingHorizontal: 10
     }
 })
